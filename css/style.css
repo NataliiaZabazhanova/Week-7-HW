@@ -1,0 +1,240 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+button {
+  cursor: pointer;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+}
+/*--------------------*/
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #e4dccf;
+}
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.content {
+  flex: 1 1 auto;
+}
+/*class .search*/
+.search__row {
+  display: flex;
+  justify-content: space-around;
+}
+.search__text {
+  margin: 50px 0px;
+  width: 400px;
+  font-style: italic;
+  font-size: 20px;
+  height: 35px;
+  border: 1px solid #002b5b;
+  border-radius: 8px;
+  color: #002b5b;
+  transition-duration: 0.3s;
+}
+.search__text:focus {
+  opacity: 0.6;
+  box-shadow: 1px 1px 5px 5px #002b5b;
+}
+.search__btn {
+  margin: 50px 0px;
+  color: #002b5b;
+  font-style: italic;
+  font-size: 20px;
+  height: 40px;
+  width: 100px;
+  background-color: #ea5455;
+  border: 2px solid #002b5b;
+  border-radius: 50px;
+  box-shadow: 1px 1px 1px #002b5b;
+  transition-duration: 0.5s;
+}
+.search__btn:hover {
+  cursor: pointer;
+  color: #ea5455;
+  background-color: #002b5b;
+}
+.search__location {
+  font-size: 15px;
+}
+/*class currentCity*/
+.currentCity__row {
+  display: flex;
+  margin: 0 -50px;
+  align-items: baseline;
+}
+.currentWeather {
+  margin: 0px 50px 50px 80px;
+}
+.currentWeather__row {
+  display: flex;
+  margin: 0 -10px;
+}
+.currentWeather__sun {
+  font-size: 60px;
+  color: #e86a33;
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+  margin: 0 10px;
+}
+.value {
+  margin: 0 10px;
+}
+.value__row {
+  display: flex;
+  flex-direction: column;
+}
+.value__temp {
+  font-size: 34px;
+  font-weight: 700;
+  font-style: italic;
+  padding: 20px 0px 0px 0px;
+  color: #002b5b;
+}
+a.value__calc {
+  color: #002b5b;
+}
+a.value__C:hover,
+a.value__F:hover {
+  color: #ea5455;
+}
+p.value__stik {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+.value__humidity,
+.value__description,
+.value__wind {
+  font-size: 18px;
+  font-style: italic;
+  padding: 20px 0px 0px 0px;
+  color: #002b5b;
+}
+.value__description {
+  text-transform: capitalize;
+}
+.currentCity__city {
+  font-size: 42px;
+  font-weight: 900;
+  padding: 20px 0px 20px 0px;
+  margin: 0 50px;
+  color: #ea5455;
+  text-shadow: 2px 2px 2px #002b5b;
+}
+
+.text-center {
+  width: 100%;
+  border-radius: 10px;
+}
+.row {
+  justify-content: center;
+}
+.col-6 {
+  width: 120px;
+  border: 1px solid #9ba4b5;
+  border-radius: 5px;
+}
+.degree {
+  padding: 0;
+  margin: 0;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 700;
+  color: #212a3e;
+}
+.day {
+  padding: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 14px;
+}
+.sunDay,
+.cloudDay,
+.rainDay {
+  padding: 0;
+  margin: 0;
+  font-size: 60px;
+  color: #e86a33;
+  text-align: center;
+}
+.cloudDay {
+  color: #93bfcf;
+}
+.rainDay {
+  color: #002b5b;
+}
+.date__current {
+  margin: 50px 0px;
+  text-align: center;
+  font-size: 22px;
+  color: #002b5b;
+  font-weight: 700;
+}
+
+.footer_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+.footer_text {
+  font-size: 15px;
+  opacity: 0.7;
+}

@@ -22,7 +22,9 @@ function showWeather(response) {
   //отримала дані про погоду у місті, що введено у пошуку
   console.log(response.data);
   let newTemp = document.querySelector("#value__tempC");
-  newTemp.innerHTML = Math.round(response.data.temperature.current);
+  //---------------------global variable celsiusTemperature for unit conversation-------
+  celsiusTemperature = response.data.temperature.current;
+  newTemp.innerHTML = Math.round(celsiusTemperature);
   //--------------------вологість----------------------------------------
   document.querySelector(
     "#humidity"
@@ -104,9 +106,23 @@ function searchGeo() {
 
 let button = document.querySelector("#geolocation");
 button.addEventListener("click", searchGeo);
-
+//----------------------------------------------------------------------------------------------------------------------
 //--------------------------------Unit conversion-------------------------------------------------------------------
-function calcTempC() {
+//---------------------from celsius to Fahrenheit---------------------------------------------------
+function calcTempFahrenheit(event) {
+event.preventDefault();
+let tempElement = document.querySelector("#value__tempC");
+let tempFahrenheit = (celsiusTemperature *9) / 5 + 32;
+tempElement.innerHTML = Math.round(tempFahrenheit);
+}
+//---------------------global variable celsiusTemperature for unit conversation-------
+let celsiusTemperature = null;
+
+let tempFahrenheit = document.querySelector("#value__F");
+tempFahrenheit.addEventListener("click", calcTempFahrenheit);
+
+
+/*function calcTempC() {
   let tempC = document.querySelector("#value__tempC");
   let unit = tempC.dataset.unit;
   let temp = parseInt(tempC.innerText);
@@ -137,3 +153,5 @@ tempCelsius.addEventListener("click", calcTempC);
 
 let tempFahrenheit = document.querySelector("#value__F");
 tempFahrenheit.addEventListener("click", calcTempF);
+*/
+//-----------------------------------------------------

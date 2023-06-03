@@ -135,6 +135,7 @@ body {
 }
 .value {
   margin: 0 10px;
+  
 }
 .value__row {
   display: flex;
@@ -149,16 +150,17 @@ body {
 }
 a.value__calc {
   color: #002b5b;
-}
+  cursor: default;
+ }
 a.value__C:hover,
 a.value__F:hover {
   color: #ea5455;
-}
+  }
 p.value__stik {
   margin: 0;
   padding: 0;
   display: inline;
-}
+  }
 .value__humidity,
 .value__description,
 .value__wind {

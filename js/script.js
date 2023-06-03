@@ -108,50 +108,25 @@ let button = document.querySelector("#geolocation");
 button.addEventListener("click", searchGeo);
 //----------------------------------------------------------------------------------------------------------------------
 //--------------------------------Unit conversion-------------------------------------------------------------------
-//---------------------from celsius to Fahrenheit---------------------------------------------------
+//---------------------from Celsius to Fahrenheit---------------------------------------------------
 function calcTempFahrenheit(event) {
-event.preventDefault();
-let tempElement = document.querySelector("#value__tempC");
-let tempFahrenheit = (celsiusTemperature *9) / 5 + 32;
-tempElement.innerHTML = Math.round(tempFahrenheit);
+  event.preventDefault();
+  let tempElement = document.querySelector("#value__tempC");
+  let tempFahrenheit = (celsiusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(tempFahrenheit);
 }
 //---------------------global variable celsiusTemperature for unit conversation-------
 let celsiusTemperature = null;
-
+//---------------------------------------------------------------------------------------------
 let tempFahrenheit = document.querySelector("#value__F");
 tempFahrenheit.addEventListener("click", calcTempFahrenheit);
-
-
-/*function calcTempC() {
-  let tempC = document.querySelector("#value__tempC");
-  let unit = tempC.dataset.unit;
-  let temp = parseInt(tempC.innerText);
-  if (unit === "fahrenheit") {
-    let temp2 = Math.round(((temp - 32) * 5) / 9);
-    tempC.dataset.unit = "celsius";
-    tempC.innerHTML = temp2;
-  } else {
-    tempC.innerHTML = temp;
-  }
-}
-
-function calcTempF() {
-  let tempC = document.querySelector("#value__tempC");
-  let unit = tempC.dataset.unit;
-  let temp = parseInt(tempC.innerText);
-  if (unit === "celsius") {
-    let temp1 = Math.round((temp * 9) / 5 + 32);
-    tempC.dataset.unit = "fahrenheit";
-    tempC.innerHTML = temp1;
-  } else {
-    tempC.innerHTML = temp;
-  }
+//--------------------------------------------------------------------------------------------
+//---------------------from Fahrenheit to Celsius----------------------------------------------
+function calcTempCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#value__tempC");
+  tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 let tempCelsius = document.querySelector("#value__C");
-tempCelsius.addEventListener("click", calcTempC);
-
-let tempFahrenheit = document.querySelector("#value__F");
-tempFahrenheit.addEventListener("click", calcTempF);
-*/
-//-----------------------------------------------------
+tempCelsius.addEventListener("click", calcTempCelsius);

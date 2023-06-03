@@ -63,9 +63,9 @@ form.addEventListener("submit", searchCity);
 //------------------------------------------------------------------------------------------------------
 //-------------------------------додаємо відображення погода за геолокацією------------------------------
 function currentWeatherGeo(response) {
-  let currentTempGeo = Math.round(response.data.temperature.current);
+  celsiusTemperature = response.data.temperature.current;
   let tempGeo = document.querySelector("#value__tempC");
-  tempGeo.innerHTML = currentTempGeo;
+  tempGeo.innerHTML = Math.round(celsiusTemperature);
   //---------------------------humidity---------------------------------------
   document.querySelector(
     "#humidity"
@@ -86,7 +86,7 @@ function currentWeatherGeo(response) {
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-  //-----------------------------display alternative name for  icon------------------
+  //-----------------------------display alternative name for icon------------------
   iconGeo.setAttribute("alt", response.data.condition.icon);
 }
 
@@ -112,8 +112,13 @@ button.addEventListener("click", searchGeo);
 function calcTempFahrenheit(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#value__tempC");
-  let tempFahrenheit = (celsiusTemperature * 9) / 5 + 32;
-  tempElement.innerHTML = Math.round(tempFahrenheit);
+  //------remove the active class---------------
+  tempCelsius.classList.remove("active");
+  //------add active class---------------
+  tempFahrenheit.classList.add("active");
+  //--------------------------------------------
+  let tempFahrenheitCalc = (celsiusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(tempFahrenheitCalc);
 }
 //---------------------global variable celsiusTemperature for unit conversation-------
 let celsiusTemperature = null;
@@ -124,6 +129,11 @@ tempFahrenheit.addEventListener("click", calcTempFahrenheit);
 //---------------------from Fahrenheit to Celsius----------------------------------------------
 function calcTempCelsius(event) {
   event.preventDefault();
+  //------remove the active class---------------
+  tempFahrenheit.classList.remove("active");
+  //------add active class---------------
+  tempCelsius.classList.add("active");
+  //--------------------------------------------
   let tempElement = document.querySelector("#value__tempC");
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }

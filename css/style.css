@@ -135,7 +135,13 @@ body {
 }
 .value {
   margin: 0 10px;
-  
+}
+.value .active {
+cursor: default;
+color:  #002b5b;
+}
+.value .active:hover {
+   text-decoration: none; 
 }
 .value__row {
   display: flex;
@@ -144,13 +150,12 @@ body {
 .value__temp {
   font-size: 34px;
   font-weight: 700;
-  font-style: italic;
   padding: 20px 0px 0px 0px;
   color: #002b5b;
 }
 a.value__calc {
-  color: #002b5b;
-  cursor: default;
+  color:#ea5455;
+  font-style: normal;
  }
 a.value__C:hover,
 a.value__F:hover {
@@ -160,6 +165,7 @@ p.value__stik {
   margin: 0;
   padding: 0;
   display: inline;
+  font-style: normal;
   }
 .value__humidity,
 .value__description,

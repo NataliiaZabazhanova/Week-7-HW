@@ -187,49 +187,75 @@ p.value__stik {
   text-shadow: 2px 2px 2px #002b5b;
 }
 
-.text-center {
-  width: 100%;
+.forecast {
+  margin: 0px 0px 0px 20px;
+}
+.forecast__row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 560px) {
+.forecast {
+  margi
+}
+}
+@media (max-width: 500px) {
+.forecast__row {
+  flex-direction: column;
+}
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 20%;
+  border: 1px solid #9ba4b5;
   border-radius: 10px;
 }
-.row {
-  justify-content: center;
-}
-.col-6 {
-  width: 120px;
-  border: 1px solid #9ba4b5;
-  border-radius: 5px;
-}
-.degree {
-  padding: 0;
+.column__degree {
+  padding: 5px;
   margin: 0;
   font-size: 22px;
   font-weight: 700;
   color: #212a3e;
+  text-align: center;
 }
-.row__min {
-font-weight: 400;
+.column__max {
 }
-.day {
-  padding: 0;
+.column__min {
+   font-weight: 400;
+   font-size: 20px;
+}
+.column__day {
+  padding: 5px;
   text-transform: uppercase;
   text-align: center;
   font-size: 14px;
+  border-top: 1px solid #9ba4b5;
+  border-bottom: 1px solid #9ba4b5;
 }
-.sunDay,
-.cloudDay,
-.rainDay {
-  padding: 0;
+.column__sky {
   margin: 0;
-  font-size: 60px;
-  color: #e86a33;
+  padding: 5px;
   text-align: center;
 }
-.cloudDay {
+
+.fa-solid {
+   padding: 0;
+  margin: 0;
+  font-size: 60px;
+  text-align: center;
+}
+.fa-sun {
+   color: #e86a33;
+}
+.fa-cloud {
   color: #93bfcf;
 }
-.rainDay {
+.fa-cloud-rain {
   color: #002b5b;
 }
+
 .date__current {
   margin: 50px 0px;
   text-align: center;

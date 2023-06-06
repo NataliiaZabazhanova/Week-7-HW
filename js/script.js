@@ -17,6 +17,39 @@ let day = days[now.getDay()];
 h2.innerHTML = `${day}  ${hours} : ${minutes}`;
 //----------------------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------------------------
+//function to display forecast from js
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="forecast__row">`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  days.forEach(function(day) {
+forecastHTML =
+  forecastHTML +
+  ` 
+<div class="forecast__column column">
+    <div class="column__degree">
+      <span class="column__max">13°C</span>
+      <span class="column__min">13°C</span>
+    </div>
+    <div class="column__day">${day}</div>
+  <div class="column__sky"><i class="fa-solid fa-sun"></i></div>
+ </div>`;
+  })
+  
+
+ forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+}
+//-----------------------------------------------------------------------------------------------------
 //display the name of the city on the result page and the current temperature of the city.
 function showWeather(response) {
   //отримала дані про погоду у місті, що введено у пошуку
@@ -57,6 +90,7 @@ function searchCity(event) {
   let key = "bf636449b03206034d0ac2d97t9eo009";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${query.value}&key=${key}&units=metric`;
   axios.get(apiUrl).then(showWeather);
+  
 }
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
@@ -140,3 +174,5 @@ function calcTempCelsius(event) {
 
 let tempCelsius = document.querySelector("#value__C");
 tempCelsius.addEventListener("click", calcTempCelsius);
+//call function displayForecast()
+displayForecast();

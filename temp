@@ -1,0 +1,42 @@
+ <div class="forecast__row">
+<div class="forecast__column column">
+    <div class="column__degree">
+      <span class="column__max">13°C</span>
+      <span class="column__min">13°C</span>
+    </div>
+    <div class="column__day">Wednesday</div>
+  <div class="column__sky"><i class="fa-solid fa-sun"></i></div>
+ </div>
+ <div class="forecast__column column">
+    <div class="column__degree">
+      <span class="column__max">13°C</span>
+      <span class="column__min">13°C</span>
+    </div>
+    <div class="column__day">Wednesday</div>
+  <div class="column__sky"><i class="fa-solid fa-sun"></i></div>
+ </div>
+ <div class="forecast__column column">
+    <div class="column__degree">
+      <span class="column__max">13°C</span>
+      <span class="column__min">13°C</span>
+    </div>
+    <div class="column__day">Wednesday</div>
+  <div class="column__sky"><i class="fa-solid fa-sun"></i></div>
+ </div>
+ <div class="forecast__column column">
+    <div class="column__degree">
+      <span class="column__max">13°C</span>
+      <span class="column__min">13°C</span>
+    </div>
+    <div class="column__day">Wednesday</div>
+  <div class="column__sky"><i class="fa-solid fa-cloud"></i></div>
+ </div>
+ <div class="forecast__column column">
+    <div class="column__degree">
+      <span class="column__max">13°C</span>
+      <span class="column__min">13°C</span>
+    </div>
+    <div class="column__day">Wednesday</div>
+  <div class="column__sky"> <i class="fa-solid fa-cloud-rain"></i></div>
+ </div>
+</div>

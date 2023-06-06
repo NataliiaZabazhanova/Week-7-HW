@@ -202,10 +202,12 @@ p.value__stik {
 .degree {
   padding: 0;
   margin: 0;
-  font-style: italic;
   font-size: 22px;
   font-weight: 700;
   color: #212a3e;
+}
+.row__min {
+font-weight: 400;
 }
 .day {
   padding: 0;

@@ -76,7 +76,9 @@ body {
 .search__row {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
+
 .search__text {
   margin: 50px 0px;
   width: 400px;
@@ -113,11 +115,29 @@ body {
 .search__location {
   font-size: 15px;
 }
+
+@media (max-width: 630px){
+  .search__row {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .search__text {
+    
+     margin: 10px 0px;
+ 
+  }
+  .search__btn {
+     margin: 10px 0px;
+    
+  }
+}
 /*class currentCity*/
 .currentCity__row {
   display: flex;
   margin: 0 -50px;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 .currentWeather {
   margin: 0px 50px 50px 80px;
@@ -197,7 +217,7 @@ p.value__stik {
 }
 @media (max-width: 560px) {
 .forecast {
-  margi
+  margin: 0;
 }
 }
 @media (max-width: 500px) {

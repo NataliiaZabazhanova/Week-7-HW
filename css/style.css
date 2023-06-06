@@ -234,7 +234,6 @@ p.value__stik {
 .column {
   display: flex;
   flex-direction: column;
-  flex: 0 1 20%;
   border: 1px solid #9ba4b5;
   border-radius: 10px;
 }

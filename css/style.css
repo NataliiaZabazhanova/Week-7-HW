@@ -129,7 +129,7 @@ body {
   }
   .search__btn {
      margin: 10px 0px;
-    
+    width: 400px;
   }
 }
 /*class currentCity*/
@@ -137,16 +137,18 @@ body {
   display: flex;
   margin: 0 -50px;
   align-items: baseline;
-  flex-wrap: wrap;
+  
 }
 .currentWeather {
   margin: 0px 50px 50px 80px;
+  flex: 0 1 66.667%;
 }
 .currentWeather__row {
   display: flex;
   margin: 0 -10px;
 }
 .currentWeather__sun {
+  flex: 0 1 50%;
   font-size: 60px;
   color: #e86a33;
   text-align: center;
@@ -154,6 +156,7 @@ body {
   margin: 0 10px;
 }
 .value {
+  flex: 0 1 50%;
   margin: 0 10px;
 }
 .value .active {
@@ -198,10 +201,12 @@ p.value__stik {
 .value__description {
   text-transform: capitalize;
 }
+
 .currentCity__city {
+  flex: 0 1 33.333%;
   font-size: 42px;
   font-weight: 900;
-  padding: 20px 0px 20px 0px;
+ 
   margin: 0 50px;
   color: #ea5455;
   text-shadow: 2px 2px 2px #002b5b;

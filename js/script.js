@@ -16,39 +16,49 @@ let days = [
 let day = days[now.getDay()];
 h2.innerHTML = `${day}  ${hours} : ${minutes}`;
 //----------------------------------------------------------------------------------------------------------------------------------------
+//function for display days in forecast
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 //---------------------------------------------------------------------------------------------------------------------------------------------
 //function to display forecast from js
-function displayForecast() {
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="forecast__row">`;
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  days.forEach(function(day) {
-forecastHTML =
-  forecastHTML +
-  ` 
-<div class="forecast__column column">
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="forecast__column column">
     <div class="column__degree">
-      <span class="column__max">13°C</span>
-      <span class="column__min">13°C</span>
+      <span class="column__max">${Math.round(
+        forecastDay.temperature.maximum
+      )}°C</span>
+      <span class="column__min">${Math.round(
+        forecastDay.temperature.minimum
+      )}°C</span>
     </div>
-    <div class="column__day">${day}</div>
-  <div class="column__sky"><i class="fa-solid fa-sun"></i></div>
- </div>`;
-  })
-  
+    <div class="column__day">${formatDay(forecastDay.time)}</div>
+    <div class="column__sky">
+       <img src="${forecastDay.condition.icon_url}" alt="${
+          forecastDay.condition.icon
+        }" />
+    </div>
+  </div>`;
+    }
+  });
 
- forecastHTML = forecastHTML + `</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-
 }
+
 //-----------------------------------------------------------------------------------------------------
 //display the name of the city on the result page and the current temperature of the city.
 function showWeather(response) {
@@ -71,7 +81,8 @@ function showWeather(response) {
     response.data.condition.description;
   //-------------------відобразим назву міста---------------------------------
   let newCityDisplay = document.querySelector("div.currentCity__city");
-  newCityDisplay.innerHTML = response.data.city;
+  let displayCity = response.data.city;
+  newCityDisplay.innerHTML = displayCity;
   //-----------------------------display icon------------------
   let icon = document.querySelector("#icon");
   icon.setAttribute(
@@ -80,22 +91,31 @@ function showWeather(response) {
   );
   //-----------------------------display alternative name for  icon------------------
   icon.setAttribute("alt", response.data.condition.icon);
+  //-------------------------------------------------------
 }
-
 function searchCity(event) {
   event.preventDefault();
   let query = document.querySelector("#search__text");
   //--------------------для відображення погоди--------------------------
   //-------------------------особистий ключ-----------------------------------------
   let key = "bf636449b03206034d0ac2d97t9eo009";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${query.value}&key=${key}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
-  
+  let currentWeatherUrl = `https://api.shecodes.io/weather/v1/current?query=${query.value}&key=${key}&units=metric`;
+  axios.get(currentWeatherUrl).then(function (currentWeatherResponse) {
+    let lon = currentWeatherResponse.data.coordinates.longitude;
+    let lat = currentWeatherResponse.data.coordinates.latitude;
+    let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
+    axios.get(forecastUrl).then(function (forecastResponse) {
+      showWeather(currentWeatherResponse);
+      displayForecast(forecastResponse);
+    });
+  });
 }
+
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
 //------------------------------------------------------------------------------------------------------
 //-------------------------------додаємо відображення погода за геолокацією------------------------------
+
 function currentWeatherGeo(response) {
   celsiusTemperature = response.data.temperature.current;
   let tempGeo = document.querySelector("#value__tempC");
@@ -122,18 +142,33 @@ function currentWeatherGeo(response) {
   );
   //-----------------------------display alternative name for icon------------------
   iconGeo.setAttribute("alt", response.data.condition.icon);
+
+  let lon = response.data.coordinates.longitude;
+  let lat = response.data.coordinates.latitude;
+  let key = "bf636449b03206034d0ac2d97t9eo009";
+  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
+  axios.get(forecastUrl).then(displayForecast);
 }
 
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  console.log(lat);
-  console.log(lon);
   let key = "bf636449b03206034d0ac2d97t9eo009";
-  let apiURL = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
 
-  axios.get(apiURL).then(currentWeatherGeo);
+  searchCityByCoordinates(apiUrl);
 }
+
+function searchCityByCoordinates(apiUrl) {
+  axios.get(apiUrl).then(function (response) {
+    showWeather(response);
+    let lon = response.data.coordinates.longitude;
+    let lat = response.data.coordinates.latitude;
+    let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
+    axios.get(forecastUrl).then(displayForecast);
+  });
+}
+
 function searchGeo() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
@@ -174,5 +209,3 @@ function calcTempCelsius(event) {
 
 let tempCelsius = document.querySelector("#value__C");
 tempCelsius.addEventListener("click", calcTempCelsius);
-//call function displayForecast()
-displayForecast();

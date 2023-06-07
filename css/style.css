@@ -1,3 +1,5 @@
+/*null style*/
+/*----------------------------------------------------------------------------*/
 * {
   padding: 0;
   margin: 0;
@@ -54,7 +56,7 @@ h6 {
 a {
   text-decoration: none;
 }
-/*--------------------*/
+/*----------------------------------------------------------------------------*/
 body {
   overflow: scroll;
   font-family: "Montserrat", sans-serif;
@@ -73,7 +75,9 @@ body {
 .content {
   flex: 1 1 auto;
 }
+/*----------------------------------------------------------------------------*/
 /*class .search*/
+/*----------------------------------------------------------------------------*/
 .search__row {
   display: flex;
   justify-content: space-around;
@@ -133,7 +137,9 @@ body {
     width: 400px;
   }
 }
+/*----------------------------------------------------------------------------*/
 /*class currentCity*/
+/*----------------------------------------------------------------------------*/
 .currentCity__row {
   display: flex;
   margin: 0 -50px;
@@ -212,7 +218,9 @@ p.value__stik {
   color: #ea5455;
   text-shadow: 2px 2px 2px #002b5b;
 }
-
+/*----------------------------------------------------------------------------*/
+/*class forecast*/
+/*----------------------------------------------------------------------------*/
 .forecast {
   margin: 0px 0px 0px 20px;
 }
@@ -226,7 +234,7 @@ p.value__stik {
   margin: 0;
 }
 }
-@media (max-width: 500px) {
+@media (max-width: 630px) {
 .forecast__row {
   flex-direction: column;
 }
@@ -238,7 +246,7 @@ p.value__stik {
   border-radius: 10px;
 }
 .column__degree {
-  padding: 5px;
+  padding: 10px;
   margin: 0;
   font-size: 22px;
   font-weight: 700;
@@ -249,12 +257,14 @@ p.value__stik {
 .column__min {
    font-weight: 400;
    font-size: 20px;
+   margin: 0px 0px 0px 10px;
 }
 .column__day {
   padding: 5px;
   text-transform: uppercase;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
+  color: #002b5b;
   border-top: 1px solid #9ba4b5;
   border-bottom: 1px solid #9ba4b5;
 }
@@ -263,23 +273,9 @@ p.value__stik {
   padding: 5px;
   text-align: center;
 }
-
-.fa-solid {
-   padding: 0;
-  margin: 0;
-  font-size: 60px;
-  text-align: center;
-}
-.fa-sun {
-   color: #e86a33;
-}
-.fa-cloud {
-  color: #93bfcf;
-}
-.fa-cloud-rain {
-  color: #002b5b;
-}
-
+/*----------------------------------------------------------------------------*/
+/*current date*/
+/*----------------------------------------------------------------------------*/
 .date__current {
   margin: 50px 0px;
   text-align: center;
@@ -287,7 +283,9 @@ p.value__stik {
   color: #002b5b;
   font-weight: 700;
 }
-
+/*----------------------------------------------------------------------------*/
+/*class .footer*/
+/*----------------------------------------------------------------------------*/
 .footer_row {
   display: flex;
   align-items: center;
